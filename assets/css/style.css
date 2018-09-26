@@ -1,0 +1,48 @@
+button,
+div,
+form,
+input {
+    margin: 10px;
+}
+body{
+    background-color: rgb(99, 7, 99);
+}
+h1{
+    color: rgb(45, 161, 22);
+    font-size: 75px;
+    font-weight: bold;
+    font-family: 'Freckle Face', cursive;
+    margin: 20px;
+}
+button {
+    background-color: darkblue;
+    border-color: rgb(11, 11, 53);
+    color: rgb(116, 112, 112);
+    font-weight: bold;
+}
+#people-tags {
+    width: 70%;
+    border: black solid 3px;
+}
+#people-gifs {
+    width: 80%;
+    float: left;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#person-input {
+    background-color: rgba(26, 26, 121, 0.233);
+    border-color: black;
+}
+#add-person {
+    background-color: darkblue;
+    border-color: rgb(11, 11, 53);
+    color: rgb(116, 112, 112);
+    font-weight: bold;
+}
+form {
+    float: right;
+    margin-right: 5%; 
+}
+

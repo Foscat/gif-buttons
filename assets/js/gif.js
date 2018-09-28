@@ -8,10 +8,10 @@
 
 var people = [
   "puppies", "kittens", 'mia khalifa', "paint",
-  "yorkies", "fence", "school", "bully", "fidget spinner",
-  "burrito", "eat pant", "cat breading", "yoga pants",
+   "fence", "school", "bully", "gandalf", "rave",
+  "burrito", "eat pant", "yoga pants", "workaholics",
   "corndogs", "disturbing", "party", "laxatives",
-  "cable guy", "epic fail", "other guys", "planking"
+  "cable guy", "epic fail", "schwifty"
 ];
 nameCount = 0;
 
@@ -20,6 +20,8 @@ nameCount = 0;
 //Get source info from giphy API
 $(document).on("click", "button", function() {
     var person = $(this).attr("data-person");
+   
+    
     
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + person + "&api_key=2P4Am3JiMqyMkTDMeKLxWRyAoCsIDkhy&limit=10&tag=trending";
     
@@ -31,32 +33,63 @@ $(document).on("click", "button", function() {
       .then(function(response) {
         var results = response.data;
         $("#people-gifs").empty();
-        
+        console.log(response.data);
 
         for (var i = 0; i < results.length; i++) {
-          var gifDiv = $("<div>");
-          gifDiv.attr({"class": "gif"});
-          
 
+          //makes each gif a ivdividual div with the class name of gif
+          var gifDiv = $("<div>");
+          gifDiv.attr({
+            "class": "gif-div",
+          });
+          
+          //gets rating value for result
           var rating = results[i].rating;
 
+          //creates a p tag tied to the rating for the gif
           var p = $("<p>").text("Rating: " + rating);
 
-          var peopleImage = $("<img>");
-          peopleImage.attr("src", results[i].images.fixed_height.url);
-
+          //generates a image tag inside the div that is the gif
+          //displays a still of the gif
+          var peopleImage = $("<img src='" + response.data[i].images.fixed_height_still.url + "'>");
+          //setting attributes for still and animate
+          peopleImage.attr({
+            "data-state": 'still',
+            "data-still":  response.data[i].images.fixed_height_still.url,
+            "data-animate": response.data[i].images.fixed_height.url
+          })
+          
+          //attaches rating to the end of the div
           gifDiv.prepend(p);
+
+          //attaches the imageDiv to the main div
           gifDiv.prepend(peopleImage);
           
-
           $("#people-gifs").prepend(gifDiv);
-        }
 
+        }
+        
         
       });
+     
 
   });
-  
+
+  $(document).on("click", "img", function() {
+    // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+    var state = $(this).attr("data-state");
+    console.log(this);
+    // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+    // Then, set the image's data-state to animate
+    // Else set src to the data-still value
+    if (state === "still") {
+      $(this).attr("src", $(this).attr("data-animate"));
+      $(this).attr("data-state", "animate");
+    } else {
+      $(this).attr("src", $(this).attr("data-still"));
+      $(this).attr("data-state", "still");
+    }
+  });
 
   function renderButtons() {
 
@@ -71,7 +104,8 @@ $(document).on("click", "button", function() {
      
      //attach the attribute of data-person to Person
      Person.attr("data-person", people[i]);
-     console.log(Person);
+     
+     //put new button at the end othe other buttons
      $("#people-tags").append(Person);
      
       
@@ -104,6 +138,12 @@ $(document).on("click", "button", function() {
     renderButtons();
   });
 
+ // When the individual gif is clicked it changes its state from still to animate and vice versa
+
+  
+
+
+  
  
 
   // Calling the renderButtons function to display the initial list of movies

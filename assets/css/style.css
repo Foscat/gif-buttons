@@ -25,7 +25,7 @@ button {
     border: black solid 3px;
 }
 #people-gifs {
-    width: 80%;
+    width: 75%;
     float: left;
     display: flex;
     flex-wrap: wrap;
@@ -33,16 +33,20 @@ button {
 
 #person-input {
     background-color: rgba(26, 26, 121, 0.233);
-    border-color: black;
+    border: inset thick rgb(107, 102, 102);
+    margin: 2em;
+    padding: 1em;
 }
 #add-person {
     background-color: darkblue;
     border-color: rgb(11, 11, 53);
     color: rgb(116, 112, 112);
     font-weight: bold;
+    margin: 2em;
+    padding: 1em;
 }
 form {
     float: right;
-    margin-right: 5%; 
+    margin-right: 3%; 
 }
 

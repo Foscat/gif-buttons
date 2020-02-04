@@ -5,7 +5,7 @@ input {
     margin: 10px;
 }
 body{
-    background-color: rgb(99, 7, 99);
+    background-color: rgb(105, 2, 105);
 }
 h1{
     color: rgb(45, 161, 22);
@@ -19,6 +19,7 @@ button {
     border-color: rgb(11, 11, 53);
     color: rgb(116, 112, 112);
     font-weight: bold;
+    border-radius: 3px;
 }
 #people-tags {
     width: 70%;
@@ -44,6 +45,7 @@ button {
     font-weight: bold;
     margin: 2em;
     padding: 1em;
+    border-radius: 3px;
 }
 form {
     float: right;
